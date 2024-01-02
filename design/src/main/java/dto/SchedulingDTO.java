@@ -1,17 +1,15 @@
 package dto;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import common.validator.DataRange;
 
 import java.time.ZonedDateTime;
 @DataRange(startDate = "initialDateTime", endDate = "finalDateTime")
-public class SchedulingDTO {
+public class SchedulingDTO extends EventDTO{
 
     private long id;
 
-    private ZonedDateTime initialDateTime;
-
-    private ZonedDateTime finalDateTime;
 
     private ClientDTO client;
 
@@ -22,8 +20,6 @@ public class SchedulingDTO {
 
     public SchedulingDTO(long id, ZonedDateTime initialDateTime, ZonedDateTime finalTime, ClientDTO client, ProfissionalDTO profissional) {
         this.id = id;
-        this.initialDateTime = initialDateTime;
-        this.finalDateTime = finalTime;
         this.client = client;
         this.professional = profissional;
     }
@@ -34,22 +30,6 @@ public class SchedulingDTO {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public ZonedDateTime getInitialDateTime() {
-        return initialDateTime;
-    }
-
-    public void setInitialDateTime(ZonedDateTime initialDateTime) {
-        this.initialDateTime = initialDateTime;
-    }
-
-    public ZonedDateTime getFinalDateTime() {
-        return finalDateTime;
-    }
-
-    public void setFinalDateTime(ZonedDateTime finalDateTime) {
-        this.finalDateTime = finalDateTime;
     }
 
     public ClientDTO getClient() {
