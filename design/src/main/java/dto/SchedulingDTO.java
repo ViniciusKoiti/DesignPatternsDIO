@@ -1,30 +1,31 @@
 package dto;
 
 
-import java.time.ZonedDateTime;
+import common.validator.DataRange;
 
+import java.time.ZonedDateTime;
+@DataRange(startDate = "initialDateTime", endDate = "finalDateTime")
 public class SchedulingDTO {
 
     private long id;
 
+    private ZonedDateTime initialDateTime;
 
-    private ZonedDateTime initialTime;
-
-    private ZonedDateTime finalTime;
+    private ZonedDateTime finalDateTime;
 
     private ClientDTO client;
 
-    private ProfissionalDTO profissional;
+    private ProfissionalDTO professional;
 
     public SchedulingDTO() {
     }
 
-    public SchedulingDTO(long id, ZonedDateTime initialTime, ZonedDateTime finalTime, ClientDTO client, ProfissionalDTO profissional) {
+    public SchedulingDTO(long id, ZonedDateTime initialDateTime, ZonedDateTime finalTime, ClientDTO client, ProfissionalDTO profissional) {
         this.id = id;
-        this.initialTime = initialTime;
-        this.finalTime = finalTime;
+        this.initialDateTime = initialDateTime;
+        this.finalDateTime = finalTime;
         this.client = client;
-        this.profissional = profissional;
+        this.professional = profissional;
     }
 
     public long getId() {
@@ -35,20 +36,20 @@ public class SchedulingDTO {
         this.id = id;
     }
 
-    public ZonedDateTime getInitialTime() {
-        return initialTime;
+    public ZonedDateTime getInitialDateTime() {
+        return initialDateTime;
     }
 
-    public void setInitialTime(ZonedDateTime initialTime) {
-        this.initialTime = initialTime;
+    public void setInitialDateTime(ZonedDateTime initialDateTime) {
+        this.initialDateTime = initialDateTime;
     }
 
-    public ZonedDateTime getFinalTime() {
-        return finalTime;
+    public ZonedDateTime getFinalDateTime() {
+        return finalDateTime;
     }
 
-    public void setFinalTime(ZonedDateTime finalTime) {
-        this.finalTime = finalTime;
+    public void setFinalDateTime(ZonedDateTime finalDateTime) {
+        this.finalDateTime = finalDateTime;
     }
 
     public ClientDTO getClient() {
@@ -60,10 +61,10 @@ public class SchedulingDTO {
     }
 
     public ProfissionalDTO getProfissional() {
-        return profissional;
+        return professional;
     }
 
     public void setProfissional(ProfissionalDTO profissional) {
-        this.profissional = profissional;
+        this.professional = profissional;
     }
 }
