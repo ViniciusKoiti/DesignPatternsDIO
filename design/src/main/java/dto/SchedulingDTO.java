@@ -1,7 +1,6 @@
 package dto;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import common.validator.DataRange;
 
 import javax.validation.constraints.NotNull;
@@ -15,12 +14,12 @@ public class SchedulingDTO extends EventDTO{
     @NotNull
     private ClientDTO client;
     @NotNull
-    private ProfissionalDTO professional;
+    private ProfessionalDTO professional;
 
     public SchedulingDTO() {
     }
 
-    public SchedulingDTO(long id, ZonedDateTime initialDateTime, ZonedDateTime finalTime, ClientDTO client, ProfissionalDTO profissional) {
+    public SchedulingDTO(long id, ZonedDateTime initialDateTime, ZonedDateTime finalTime, ClientDTO client, ProfessionalDTO profissional) {
         this.id = id;
         this.client = client;
         this.professional = profissional;
@@ -42,11 +41,11 @@ public class SchedulingDTO extends EventDTO{
         this.client = client;
     }
 
-    public ProfissionalDTO getProfissional() {
+    public ProfessionalDTO getProfissional() {
         return professional;
     }
 
-    public void setProfissional(ProfissionalDTO profissional) {
+    public void setProfissional(ProfessionalDTO profissional) {
         this.professional = profissional;
     }
 }
