@@ -4,15 +4,17 @@ package dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import common.validator.DataRange;
 
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 @DataRange(startDate = "initialDateTime", endDate = "finalDateTime")
 public class SchedulingDTO extends EventDTO{
 
+
     private long id;
 
-
+    @NotNull
     private ClientDTO client;
-
+    @NotNull
     private ProfissionalDTO professional;
 
     public SchedulingDTO() {

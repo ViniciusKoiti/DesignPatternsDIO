@@ -1,4 +1,6 @@
 package dto;
 
-public class ClientDTO {
+import model.Person;
+
+public class ClientDTO extends PersonDTO {
 }

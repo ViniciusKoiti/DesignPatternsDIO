@@ -1,11 +1,12 @@
 package dto;
 
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 
 public class EventDTO {
-
+    @NotNull
     private ZonedDateTime initialDateTime;
-
+    @NotNull
     private ZonedDateTime finalDateTime;
 
     public ZonedDateTime getInitialDateTime() {

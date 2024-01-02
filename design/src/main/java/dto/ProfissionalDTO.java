@@ -1,4 +1,4 @@
 package dto;
 
-public class ProfissionalDTO {
+public class ProfissionalDTO extends PersonDTO {
 }
