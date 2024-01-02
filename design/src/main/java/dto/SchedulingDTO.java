@@ -8,7 +8,6 @@ import java.time.ZonedDateTime;
 @DataRange(startDate = "initialDateTime", endDate = "finalDateTime")
 public class SchedulingDTO extends EventDTO{
 
-
     private long id;
 
     @NotNull

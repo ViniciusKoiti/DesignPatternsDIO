@@ -36,7 +36,6 @@ public class SchedulingTests {
         SchedulingDTO scheduling = new SchedulingDTO();
         scheduling.setInitialDateTime(ZonedDateTime.of(2021, 1, 1, 12, 0, 0, 0, ZoneId.of("UTC")));
         scheduling.setFinalDateTime(ZonedDateTime.of(2020, 1, 1, 10, 0, 0, 0, ZoneId.of("UTC")));
-
         assertFalse(validator.isValid(scheduling, null));
     }
 }

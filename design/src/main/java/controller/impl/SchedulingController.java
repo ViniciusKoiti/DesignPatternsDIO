@@ -4,10 +4,19 @@ import controller.CrudController;
 import dto.SchedulingDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+import service.SchedullingService;
 
+@RestController
 public class SchedulingController implements CrudController<SchedulingDTO> {
+
+    private SchedullingService schedullingService;
+
+
     @Override
     public ResponseEntity<SchedulingDTO> create(SchedulingDTO objetoVo) {
+
+
         return null;
     }
 
