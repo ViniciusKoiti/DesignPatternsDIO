@@ -1,6 +1,11 @@
 package com.dio.project.design.mock;
 
 import dto.AddressDTO;
+import dto.PersonDTO;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AddressMock {
 
@@ -11,5 +16,11 @@ public class AddressMock {
         address.setState("Anystate");
         address.setZipCode("12345");
         return address;
+    }
+
+    public static List<AddressDTO> createMockPersonDTOList(int size) {
+        return IntStream.range(0, size)
+                .mapToObj(i -> createMockAddressDTO())
+                .collect(Collectors.toList());
     }
 }

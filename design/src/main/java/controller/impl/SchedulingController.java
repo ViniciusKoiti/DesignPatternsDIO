@@ -10,6 +10,10 @@ import service.SchedullingService;
 @RestController
 public class SchedulingController implements CrudController<SchedulingDTO> {
 
+    public SchedulingController(SchedullingService schedullingService) {
+        this.schedullingService = schedullingService;
+    }
+
     private SchedullingService schedullingService;
 
 
