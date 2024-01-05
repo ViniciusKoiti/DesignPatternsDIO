@@ -2,20 +2,24 @@ package controller.impl;
 
 import controller.CrudController;
 import dto.SchedulingDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import service.SchedullingService;
+import service.SchedulingService;
 
 @RestController
+@RequestMapping("/scheduling")
 public class SchedulingController implements CrudController<SchedulingDTO> {
 
-    public SchedulingController(SchedullingService schedullingService) {
+    private final SchedulingService schedullingService;
+
+    public SchedulingController(SchedulingService schedullingService) {
         this.schedullingService = schedullingService;
     }
-
-    private SchedullingService schedullingService;
-
 
     @Override
     public ResponseEntity<SchedulingDTO> create(SchedulingDTO objetoVo) {
@@ -25,8 +29,9 @@ public class SchedulingController implements CrudController<SchedulingDTO> {
     }
 
     @Override
-    public ResponseEntity<SchedulingDTO> getById(long id) {
-        return null;
+    @GetMapping("/{id}")
+    public ResponseEntity<SchedulingDTO> getById(@PathVariable long id) {
+        return this.schedullingService.getById(id);
     }
 
     @Override
