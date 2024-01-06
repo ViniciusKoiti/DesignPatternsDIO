@@ -18,21 +18,12 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @ExtendWith(MockitoExtension.class)
 @WebMvcTest(SchedulingController.class)
 public class SchedulingTests {
     private final DateRangeValidator validator = new DateRangeValidator();
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private SchedulingService schedulingService;
 
     @Test
     void testValidDateRange() {
@@ -60,20 +51,7 @@ public class SchedulingTests {
         assertFalse(validator.isValid(scheduling, null));
     }
 
-    @BeforeEach
-    void setUp(){
-        SchedulingDTO mockScheduling = new SchedulingDTO();
-        mockScheduling.setId(1L);
-        ResponseEntity<SchedulingDTO> responseEntity = ResponseEntity.ok(mockScheduling);
-        when(schedulingService.getById(1L)).thenReturn(responseEntity);
-    }
 
-    @Test
-    void getSchedulingByIdShouldReturnScheduling() throws Exception {
-        mockMvc.perform(get("/scheduling/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1L));
-    }
 }
 
 

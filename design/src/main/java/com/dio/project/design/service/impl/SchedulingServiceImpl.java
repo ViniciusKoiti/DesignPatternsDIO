@@ -4,7 +4,9 @@ import com.dio.project.design.service.SchedulingService;
 import com.dio.project.design.dto.SchedulingDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SchedulingServiceImpl implements SchedulingService {
     @Override
     public ResponseEntity<SchedulingDTO> create(SchedulingDTO objetoVo) {
