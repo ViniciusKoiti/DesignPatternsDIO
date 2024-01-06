@@ -37,9 +37,15 @@ public class SchedullingControllerTest {
     }
 
     @Test
-    void getSchedulingByIdShouldReturnScheduling() throws Exception {
+    void testGetSchedulingByIdShouldReturnScheduling() throws Exception {
         mockMvc.perform(get("/scheduling/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1L));
+    }
+
+    @Test
+    void testGetSchedulingNotExistScheduling() throws Exception {
+        mockMvc.perform(get("/scheduling/2"))
+                .andExpect(status().isNotFound());
     }
 }
