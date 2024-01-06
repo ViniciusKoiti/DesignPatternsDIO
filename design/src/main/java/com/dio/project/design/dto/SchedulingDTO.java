@@ -18,6 +18,10 @@ public class SchedulingDTO extends EventDTO{
     public SchedulingDTO() {
     }
 
+    public SchedulingDTO(long id) {
+        this.id = id;
+    }
+
     public SchedulingDTO(long id, ZonedDateTime initialDateTime, ZonedDateTime finalTime, ClientDTO client, ProfessionalDTO profissional) {
         this.id = id;
         this.client = client;

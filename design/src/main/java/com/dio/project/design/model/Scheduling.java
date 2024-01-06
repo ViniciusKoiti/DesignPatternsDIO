@@ -9,6 +9,14 @@ public class Scheduling {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public Scheduling() {
+    }
+    public Scheduling(Long id) {
+        this.id = id;
+    }
+
+
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -16,4 +24,5 @@ public class Scheduling {
     public Long getId() {
         return id;
     }
+
 }
