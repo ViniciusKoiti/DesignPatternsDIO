@@ -1,6 +1,6 @@
 package com.dio.project.design.controller;
 
-import com.dio.project.design.common.constant.PageConstant;
+import com.dio.project.design.common.constant.page.PageConstant;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

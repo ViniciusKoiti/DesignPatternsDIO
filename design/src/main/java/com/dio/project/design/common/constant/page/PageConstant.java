@@ -1,4 +1,4 @@
-package com.dio.project.design.common.constant;
+package com.dio.project.design.common.constant.page;
 
 public class PageConstant {
 

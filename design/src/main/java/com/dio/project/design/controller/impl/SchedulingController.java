@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import com.dio.project.design.service.SchedulingService;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/scheduling")
 public class SchedulingController implements CrudController<SchedulingDTO> {
 

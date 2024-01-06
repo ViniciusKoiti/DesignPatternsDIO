@@ -1,13 +1,16 @@
 package com.dio.project.design.service.impl;
 
+import com.dio.project.design.common.constant.scheduling.SchedulingConstant;
 import com.dio.project.design.model.Scheduling;
 import com.dio.project.design.repository.SchedulingRepository;
 import com.dio.project.design.service.SchedulingService;
 import com.dio.project.design.dto.SchedulingDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -32,7 +35,7 @@ public class SchedulingServiceImpl implements SchedulingService {
     public ResponseEntity<SchedulingDTO> getById(long id) {
         Optional<Scheduling> schedulingOptional = schedulingRepository.findById(id);
         if(schedulingOptional.isEmpty()){
-            return ResponseEntity.notFound().build();
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,String.format(SchedulingConstant.SCHEDULING_ERROR_NOT_FOUND,id));
         }
         SchedulingDTO schedulingDTO = objectMapper.convertValue(schedulingOptional.get(),SchedulingDTO.class);
         return ResponseEntity.ok(schedulingDTO);
