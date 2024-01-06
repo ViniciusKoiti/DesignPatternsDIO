@@ -1,7 +1,7 @@
 package com.dio.project.design.mock;
 
-import dto.EventDTO;
-import dto.SchedulingDTO;
+import com.dio.project.design.dto.EventDTO;
+import com.dio.project.design.dto.SchedulingDTO;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;

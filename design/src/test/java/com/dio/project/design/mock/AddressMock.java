@@ -1,7 +1,6 @@
 package com.dio.project.design.mock;
 
-import dto.AddressDTO;
-import dto.PersonDTO;
+import com.dio.project.design.dto.AddressDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;

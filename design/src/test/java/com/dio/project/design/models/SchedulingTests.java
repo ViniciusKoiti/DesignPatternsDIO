@@ -1,20 +1,18 @@
 package com.dio.project.design.models;
 
-import common.validator.DateRangeValidator;
-import controller.impl.SchedulingController;
-import dto.SchedulingDTO;
+import com.dio.project.design.common.validator.DateRangeValidator;
+import com.dio.project.design.controller.impl.SchedulingController;
+import com.dio.project.design.dto.SchedulingDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
-import service.SchedulingService;
+import com.dio.project.design.service.SchedulingService;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;

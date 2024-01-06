@@ -1,7 +1,7 @@
 package com.dio.project.design.mock;
 
-import dto.ClientDTO;
-import dto.PersonDTO;
+import com.dio.project.design.dto.ClientDTO;
+import com.dio.project.design.dto.PersonDTO;
 
 import static com.dio.project.design.mock.PersonMock.createMockPersonDTO;
 
