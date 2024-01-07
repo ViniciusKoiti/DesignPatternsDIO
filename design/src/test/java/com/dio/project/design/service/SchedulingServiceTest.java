@@ -4,21 +4,17 @@ import com.dio.project.design.dto.SchedulingDTO;
 import com.dio.project.design.model.Scheduling;
 import com.dio.project.design.repository.SchedulingRepository;
 import com.dio.project.design.service.impl.SchedulingServiceImpl;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -64,7 +60,7 @@ public class SchedulingServiceTest {
         when(objectMapper.convertValue(sendSchedulingDTO,Scheduling.class)).thenReturn(mockScheduling);
         when(schedulingRepository.save(any(Scheduling.class))).thenReturn(mockScheduling);
         ResponseEntity<SchedulingDTO> resultSchedulingDTOService = schedulingService.create(sendSchedulingDTO);
-        assertEquals(sendSchedulingDTO.getId(), resultSchedulingDTOService.getBody().getId());
+        assertEquals(sendSchedulingDTO.getId(), Objects.requireNonNull(resultSchedulingDTOService.getBody()).getId());
         assertEquals(resultSchedulingDTOService.getStatusCode(),HttpStatus.CREATED);
     }
 
