@@ -18,10 +18,9 @@ public class SchedulingController implements CrudController<SchedulingDTO> {
     }
 
     @Override
-    public ResponseEntity<SchedulingDTO> create(SchedulingDTO objetoVo) {
-
-
-        return null;
+    @PostMapping
+    public ResponseEntity<SchedulingDTO> create(@RequestBody SchedulingDTO objetoVo) {
+        return this.schedullingService.create(objetoVo);
     }
 
     @Override

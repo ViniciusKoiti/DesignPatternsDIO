@@ -21,8 +21,6 @@ public class SchedullingMock {
     public static SchedulingDTO createMockSchedulingDTO(long id) {
         SchedulingDTO scheduling = new SchedulingDTO();
         scheduling.setId(id);
-        scheduling.setClient(createMockClientDTO());
-        scheduling.setProfissional(createMockProfessionalDTO());
         EventDTO event = createMockEventDTO();
         scheduling.setInitialDateTime(event.getInitialDateTime());
         scheduling.setFinalDateTime(event.getFinalDateTime());
