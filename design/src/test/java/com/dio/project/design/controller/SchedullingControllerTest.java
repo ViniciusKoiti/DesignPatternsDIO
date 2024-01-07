@@ -24,8 +24,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @ExtendWith(MockitoExtension.class)
@@ -52,7 +53,9 @@ public class SchedullingControllerTest {
 
     @Test
     void testGetSchedulingNotExistScheduling() throws Exception {
-        mockMvc.perform(get("/scheduling/2"))
+        when(schedulingService.getById(0L)).thenThrow((new ResponseStatusException(HttpStatus.NOT_FOUND, "Scheduling not found")));
+
+        mockMvc.perform(get("/scheduling/0"))
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof ResponseStatusException));
     }
 
@@ -71,5 +74,22 @@ public class SchedullingControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").
                         value(returnedDTO.getId())); // Ajuste conforme necessário
+    }
+
+    @Test
+    void testUpdateScheduling() throws Exception {
+        long id = 1;
+        SchedulingDTO schedulingDTO = new SchedulingDTO(id); // Substitua com valores apropriados
+        SchedulingDTO returnedDTO = new SchedulingDTO(id);   // O DTO que você espera que seja retornado
+
+        when(schedulingService.update(any(SchedulingDTO.class))).
+                thenReturn(new ResponseEntity<>(returnedDTO, HttpStatus.OK));
+
+        mockMvc.perform(put("/scheduling")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(new ObjectMapper().writeValueAsString(schedulingDTO)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").
+                value(returnedDTO.getId()));
     }
 }

@@ -17,8 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Objects;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -70,5 +69,26 @@ public class SchedulingServiceTest {
         when(schedulingRepository.existsById(1L)).thenReturn(true);
         ResponseEntity<SchedulingDTO> resultSchedulingDTOService = schedulingService.create(sendSchedulingDTO);
         assertEquals(resultSchedulingDTOService.getStatusCode(),HttpStatus.CONFLICT);
+    }
+
+    @Test
+    void testUpdateScheduling() {
+        long id = 1L;
+        SchedulingDTO schedulingDTO = new SchedulingDTO(); // Configure o DTO
+        schedulingDTO.setId(id);
+
+        Scheduling schedulingEntity = new Scheduling(); // Entidade a ser retornada pelo repository
+        schedulingEntity.setId(id);
+
+        when(schedulingRepository.existsById(id)).thenReturn(true);
+        when(schedulingRepository.save(any(Scheduling.class))).thenReturn(schedulingEntity);
+        when(objectMapper.convertValue(schedulingDTO, Scheduling.class)).thenReturn(schedulingEntity);
+        when(objectMapper.convertValue(schedulingEntity, SchedulingDTO.class)).thenReturn(schedulingDTO);
+
+        ResponseEntity<SchedulingDTO> response = schedulingService.update(schedulingDTO);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals(id, response.getBody().getId());
     }
 }
