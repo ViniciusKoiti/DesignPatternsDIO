@@ -10,11 +10,6 @@ public class SchedulingDTO extends EventDTO{
 
     private long id;
 
-    @NotNull
-    private ClientDTO client;
-    @NotNull
-    private ProfessionalDTO professional;
-
     public SchedulingDTO() {
     }
 
@@ -22,10 +17,8 @@ public class SchedulingDTO extends EventDTO{
         this.id = id;
     }
 
-    public SchedulingDTO(long id, ZonedDateTime initialDateTime, ZonedDateTime finalTime, ClientDTO client, ProfessionalDTO profissional) {
+    public SchedulingDTO(long id, ZonedDateTime initialDateTime, ZonedDateTime finalTime) {
         this.id = id;
-        this.client = client;
-        this.professional = profissional;
     }
 
     public long getId() {
@@ -36,19 +29,4 @@ public class SchedulingDTO extends EventDTO{
         this.id = id;
     }
 
-    public ClientDTO getClient() {
-        return client;
-    }
-
-    public void setClient(ClientDTO client) {
-        this.client = client;
-    }
-
-    public ProfessionalDTO getProfissional() {
-        return professional;
-    }
-
-    public void setProfissional(ProfessionalDTO profissional) {
-        this.professional = profissional;
-    }
 }

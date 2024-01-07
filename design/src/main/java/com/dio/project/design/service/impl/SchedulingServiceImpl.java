@@ -27,8 +27,12 @@ public class SchedulingServiceImpl implements SchedulingService {
     }
 
     @Override
-    public ResponseEntity<SchedulingDTO> create(SchedulingDTO objetoVo) {
-        return null;
+    public ResponseEntity<SchedulingDTO> create(SchedulingDTO schedulingDTO) {
+        if(schedulingDTO.getId() == 0 || schedulingRepository.existsById(schedulingDTO.getId())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+        schedulingRepository.save(objectMapper.convertValue(schedulingDTO, Scheduling.class));
+        return ResponseEntity.status(HttpStatus.CREATED).body(schedulingDTO);
     }
 
     @Override
